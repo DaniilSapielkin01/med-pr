@@ -2,7 +2,15 @@
   "ci": {
     "collect": {
       "startServerCommand": "pnpm start",
-      "url": ["http://localhost:3000/"],
+      "url": [
+        "http://localhost:3000/",
+        "http://localhost:3000/services",
+        "http://localhost:3000/doctors",
+        "http://localhost:3000/doctor/[slug]",
+        "http://localhost:3000/privacy-policy",
+        "http://localhost:3000/medical-centers",
+        "http://localhost:3000/hospital"
+      ],
       "numberOfRuns": 3
     },
     "assert": {

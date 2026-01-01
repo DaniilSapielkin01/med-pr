@@ -18,6 +18,7 @@ export const wrapperCard = style({
   border: "1px solid var(--gray-a6)",
   borderRadius: "var(--radius-5)",
   padding: "var(--space-5)",
-  width: "420px",
+  maxWidth: "420px",
+  width: "100%",
   backgroundColor: "white",
 });

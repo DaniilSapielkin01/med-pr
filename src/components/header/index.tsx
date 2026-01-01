@@ -5,15 +5,19 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/shared/assets/img/logo.png";
 import { useRef, useState } from "react";
-import { PhoneCall } from "lucide-react";
 import { mainServices } from "../../shared/constants/services";
-import { toast } from "sonner";
-import { CONSTANTS } from "@/shared/constants";
+import { MobileHeader } from "./mobile-header";
+import { Contacts } from "./contacts";
+import { usePathname } from "next/navigation";
 import * as styles from "./styles.css";
 
 export const Header = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openItem, setOpenItem] = useState<string | null>(null);
   const closeTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  // Hooks
+  const pathname = usePathname();
 
   const openMenu = (title: string) => {
     if (closeTimeout.current) {
@@ -29,17 +33,12 @@ export const Header = () => {
     }, 120);
   };
 
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(CONSTANTS.PHONE_NUMBER);
-    toast.success("Успішно скопійовано");
-  };
-
   return (
     <Flex className={styles.stickyNav}>
       <Flex
         gap="2"
         width="100%"
-        px="6"
+        px={{ initial: "3", lg: "6" }}
         justify="between"
         align="center"
         height={"60px"}
@@ -49,43 +48,40 @@ export const Header = () => {
           <Image
             src={logo}
             alt="logo-icon"
-            style={{ maxWidth: "300px", height: "auto" }}
             loading="lazy"
+            className={styles.logoImg}
           />
         </Link>
-        <Flex align="center" gap="4">
-          <Flex
-            align="center"
-            gap="1"
-            style={{ cursor: "pointer" }}
-            onClick={handleCopy}
-          >
-            <PhoneCall
-              height={18}
-              style={{ color: "var(--mint-a11)" }}
-              fontVariant={"bold"}
-            />
-            <Text weight="bold" size="4" style={{ color: "var(--mint-a11" }}>
-              {CONSTANTS.PHONE_NUMBER}
-            </Text>
-          </Flex>
+        <Flex align="center" gap="4" className={styles.desktopNav}>
+          <Contacts />
           {mainServices.map((item) => {
+            const isActive = pathname === item.link;
+            const isOpen = openItem === item.title;
+
             if (!item.additional) {
               return (
-                <Link key={item.title} href={item.link}>
-                  <Flex px="3" className={styles.navItem}>
-                    <Text size={{ initial: "2", md: "3" }} weight="medium">
-                      {item.title}
-                    </Text>
-                    <span
-                      className={`${styles.spanBg} ${styles.navItemHover}`}
-                    />
-                  </Flex>
+                <Link
+                  key={item.title}
+                  href={item.link}
+                  className={styles.navItem}
+                >
+                  <Text
+                    size="3"
+                    className={`${styles.navLink} ${
+                      isActive ? styles.navItemActive : ""
+                    }`}
+                    wrap="nowrap"
+                  >
+                    {item.title}
+                  </Text>
+                  <span
+                    className={`${styles.underline} ${
+                      (isOpen || isActive) && styles.navItemActive
+                    }`}
+                  />
                 </Link>
               );
             }
-
-            const isOpen = openItem === item.title;
 
             return (
               <DropdownMenu.Root key={item.title} open={isOpen} modal={false}>
@@ -95,23 +91,31 @@ export const Header = () => {
                   style={{ position: "relative" }}
                 >
                   <DropdownMenu.Trigger>
-                    <Link href={item.link}>
-                      <Flex px="3" className={styles.navItem}>
-                        <Text size={{ initial: "2", md: "3" }} weight="medium">
-                          {item.title}
-                        </Text>
-                        <span
-                          className={`${styles.spanBg} ${styles.navItemHover} ${
-                            isOpen && styles.navItemActive
-                          }`}
-                        />
-                      </Flex>
+                    <Link
+                      key={item.title}
+                      href={item.link}
+                      className={styles.navItem}
+                    >
+                      <Text
+                        size="3"
+                        className={`${styles.navLink} ${
+                          (isOpen || isActive) && styles.navItemActive
+                        }`}
+                        wrap="nowrap"
+                      >
+                        {item.title}
+                      </Text>
+                      <span
+                        className={`${styles.underline} ${
+                          (isOpen || isActive) && styles.navItemActive
+                        }`}
+                      />
                     </Link>
                   </DropdownMenu.Trigger>
 
                   <DropdownMenu.Content
-                    sideOffset={20}
-                    align={"center"}
+                    sideOffset={19}
+                    align="center"
                     onCloseAutoFocus={(e) => e.preventDefault()}
                   >
                     <Grid
@@ -121,24 +125,43 @@ export const Header = () => {
                         item.additional.length > 3 ? styles.dropdownGrid : ""
                       }
                     >
-                      {item.additional.map((service) => (
-                        <DropdownMenu.Item
-                          key={service.ua}
-                          className={styles.dropdownItem}
-                        >
-                          <Link href={service.link}>
-                            <Text size="2" weight="medium">
-                              {service.ua}
-                            </Text>
+                      {item.additional.map((service) => {
+                        const Icon = service.icon;
+
+                        return (
+                          <Link
+                            href={`/service${service.link}`}
+                            key={service.ua}
+                          >
+                            <DropdownMenu.Item
+                              key={service.ua}
+                              className={styles.dropdownItem}
+                            >
+                              {Icon && <Icon size={14} />}
+                              <Text size="2" weight="medium">
+                                {service.ua}
+                              </Text>
+                            </DropdownMenu.Item>
                           </Link>
-                        </DropdownMenu.Item>
-                      ))}
+                        );
+                      })}
                     </Grid>
                   </DropdownMenu.Content>
                 </div>
               </DropdownMenu.Root>
             );
           })}
+        </Flex>
+
+        {/* Мобільна частина */}
+        <Flex className={styles.mobileNav} align="center" gap="4">
+          <Flex display={{ initial: "none", xs: "flex", md: "flex" }}>
+            <Contacts />
+          </Flex>
+          <MobileHeader
+            isOpen={mobileMenuOpen}
+            onToggle={() => setMobileMenuOpen((prev) => !prev)}
+          />
         </Flex>
       </Flex>
     </Flex>

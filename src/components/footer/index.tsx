@@ -1,106 +1,167 @@
 "use client";
 
-import { mainServices } from "@/shared/constants/services";
-import { Flex, Grid, Text } from "@radix-ui/themes";
+import { Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import logoImg from "@/shared/assets/img/logo.png";
 import Image from "next/image";
 import * as styles from "./styles.css";
-import { PhoneCall } from "lucide-react";
+import { PhoneCall, Mail, Instagram, Facebook } from "lucide-react";
 import { CONSTANTS } from "@/shared/constants";
 import { toast } from "sonner";
+import { mainServices } from "@/shared/constants/services";
 
 export const Footer = () => {
   const handleCopy = async () => {
     await navigator.clipboard.writeText(CONSTANTS.PHONE_NUMBER);
-    toast.success("Успішно скопійовано");
+    toast.success("Номер скопійовано!");
   };
+  const cleanPhone = CONSTANTS.PHONE_NUMBER.replace(/[^\d+]/g, "");
 
   return (
-    <Flex
-      align="center"
-      justify="center"
-      width="100%"
-      className={styles.footerWrapper}
-      position={"relative"}
-      direction={"column"}
-    >
-      <Flex
-        width={"100%"}
-        justify={"between"}
-        align={"center"}
-        maxWidth={"1440px"}
-        py="6"
-        px="3"
-        m="auto"
-        wrap="wrap"
-        gap="4"
-      >
-        <Grid columns={"1"} gapY="3">
-          {mainServices.map((item) => (
-            <Link key={item.title} href={item.link}>
-              <Flex px="3" className={styles.navItem} maxWidth={"fit-content"}>
-                <Text size={"3"} weight="medium">
-                  {item.title}
-                </Text>
-                <span className={`${styles.spanBg} ${styles.navItemHover}`} />
-              </Flex>
-            </Link>
-          ))}
-        </Grid>
-
-        <Image
-          src={logoImg}
-          alt="logo"
-          style={{ maxWidth: "300px", height: "auto", maxHeight: "50px" }}
-          loading="lazy"
-        />
-
-        <Flex direction={"column"} gap="4">
-          <Flex>Social - 1</Flex>
-          <Flex>Social - 1</Flex>
+    <Flex direction="column" width="100%" asChild>
+      <footer className={styles.footerWrapper}>
+        <Flex
+          direction={{ initial: "column", md: "row" }}
+          justify="between"
+          align={{ initial: "center", md: "start" }}
+          gap={{ initial: "1", md: "7" }}
+          py={{ initial: "4", md: "6" }}
+          px={{ initial: "3", md: "5" }}
+          maxWidth="1440px"
+          m="auto"
+        >
           <Flex
-            align="center"
-            gap="1"
-            style={{ cursor: "pointer" }}
-            onClick={handleCopy}
+            direction="column"
+            gap="6"
+            align={{ initial: "center", md: "start" }}
+            maxWidth="360px"
           >
-            <PhoneCall
-              height={18}
-              style={{ color: "var(--mint-a11)" }}
-              fontVariant={"bold"}
+            <Image
+              src={logoImg}
+              alt="Логотип Med-Site"
+              width={240}
+              height={64}
+              style={{ objectFit: "contain" }}
             />
-            <Text weight="bold" size="4" style={{ color: "var(--mint-a11" }}>
-              {CONSTANTS.PHONE_NUMBER}
+            <Text
+              size="3"
+              color="gray"
+              align={{ initial: "center", md: "left" }}
+            >
+              Надійна медична допомога з турботою про ваше здоров'я та комфорт
             </Text>
+
+            <Flex
+              gap="4"
+              align="center"
+              justify={{ initial: "center", md: "start" }}
+            >
+              <a
+                href={CONSTANTS.SOCIAL_INSTAGRAM}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+              >
+                <div className={styles.socialCircle}>
+                  <Instagram size={20} className={styles.socialIcon} />
+                </div>
+              </a>
+              <a
+                href={CONSTANTS.SOCIAL_FACEBOOK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+              >
+                <div className={styles.socialCircle}>
+                  <Facebook size={20} className={styles.socialIcon} />
+                </div>
+              </a>
+            </Flex>
+          </Flex>
+
+          <Flex
+            direction="column"
+            gap="4"
+            align={{ initial: "center", md: "start" }}
+          >
+            <Text size="5" weight="bold" className={styles.sectionTitle}>
+              Наші послуги
+            </Text>
+            <Flex
+              direction="column"
+              gap="3"
+              align={{ initial: "center", md: "start" }}
+            >
+              {mainServices.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.link}
+                  className={styles.navItem}
+                >
+                  <Text size="3" className={styles.navLink}>
+                    {item.title}
+                  </Text>
+                  <span className={styles.underline} />
+                </Link>
+              ))}
+            </Flex>
+          </Flex>
+
+          <Flex
+            direction="column"
+            gap="5"
+            align={{ initial: "center", md: "start" }}
+          >
+            <Text size="5" weight="bold" className={styles.sectionTitle}>
+              Контакти
+            </Text>
+
+            <Flex
+              direction="column"
+              gap="4"
+              align={{ initial: "center", md: "start" }}
+            >
+              <a
+                href={`tel:${cleanPhone}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <div className={styles.contactItem} onClick={handleCopy}>
+                  <PhoneCall size={21} className={styles.contactIcon} />
+                  <Text size="3" weight="bold">
+                    {CONSTANTS.PHONE_NUMBER}
+                  </Text>
+                </div>
+              </a>
+
+              {/* <a href="mailto:info@med-site.ua" className={styles.contactItem}>
+                <Mail size={21} className={styles.contactIcon} />
+                <Text size="3">info@med-site.ua</Text>
+              </a> */}
+            </Flex>
           </Flex>
         </Flex>
-      </Flex>
 
-      <Flex
-        width="100%"
-        align="center"
-        justify={"center"}
-        wrap="wrap"
-        gap="2"
-        p="4"
-        style={{ backgroundColor: "var(--sky-a4)" }}
-      >
-        <Text weight={"medium"} size={"2"}>
-          Ліцензія МОЗ України N3498/21/M від 12.08.2021
-        </Text>
-
-        <Link href={"/"} style={{ lineHeight: "18px" }}>
-          <Text
-            weight={"medium"}
-            size={"2"}
-            color="blue"
-            style={{ textDecoration: "underline" }}
-          >
-            Політика конфіденційності
+        <Flex
+          className={styles.lowerSection}
+          direction={{ initial: "column", sm: "row" }}
+          gap="6"
+        >
+          <Text size="2" color="gray">
+            © 2025 Prevention. Всі права захищено.
           </Text>
-        </Link>
-      </Flex>
+
+          <Link href="/privacy-policy" className={styles.navItem}>
+            <Text size="2" className={styles.navLink}>
+              Політика конфіденційності
+            </Text>
+            <span className={styles.underline} />
+          </Link>
+
+          <Text size="2" color="gray">
+            Ліцензія МОЗ України N3498/21/M від 12.08.2021
+          </Text>
+        </Flex>
+      </footer>
     </Flex>
   );
 };

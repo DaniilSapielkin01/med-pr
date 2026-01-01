@@ -9,4 +9,5 @@ export interface IDoctors {
   education?: string;
   specialization?: string;
   directions?: string[];
+  instagram?: string;
 }

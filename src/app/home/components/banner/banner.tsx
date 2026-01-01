@@ -49,8 +49,12 @@ export const Banner = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={rightVariants}
         >
-          <Flex direction="column" gap="4">
-            <Text size={{ initial: "6", md: "8" }} weight="bold">
+          <Flex direction={"column"} gap="4" align={"center"}>
+            <Text
+              size={{ initial: "6", md: "8" }}
+              weight="bold"
+              align={"center"}
+            >
               Не просто ЛІКУЄМО, <br /> а робимо ЗДОРОВИМИ
             </Text>
             <Image

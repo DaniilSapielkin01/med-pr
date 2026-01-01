@@ -7,9 +7,9 @@ import ScrollToTop from "./utils/scroll-to-top";
 export const Root = ({ children }: { children: React.ReactNode }) => {
   return (
     <Theme>
-      <Flex position={"relative"} height={"100vh"} direction={"column"}>
-        <Header />
+      <Header />
 
+      <Flex position={"relative"} height={"100%"} direction={"column"}>
         <BgCircleMain />
 
         <Flex direction="column" flexGrow="1">

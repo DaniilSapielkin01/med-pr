@@ -8,6 +8,7 @@ export const chiefDoctor: IDoctors = {
   avatar: "/images/doctors/Петров_360х540.webp",
   shortSpecialty: "Головний лікар, лікар-інфекціоніст, сімейний лікар",
   experience: "13+ років професійної діяльності",
+  instagram: "https://www.instagram.com/drpetrovviktor/",
   education:
     "Ужгородський національний університет, спеціальність «Лікувальна справа» (2009 р.). Ужгородський національний університет, спеціальність «Фізична та біомедична електроніка» (2009 р.).",
   specialization:

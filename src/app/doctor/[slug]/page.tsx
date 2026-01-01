@@ -1,217 +1,50 @@
-"use client";
-
-import { useState } from "react";
 import { chiefDoctor, doctors } from "@/data/doctors-list";
-import { Flex, Text, Heading, Box, Separator } from "@radix-ui/themes";
-import { useParams } from "next/navigation";
-import * as styles from "./styles.css";
-import Image from "next/image";
-import flowerImg from "@/shared/assets/img/flowers.png";
-import { Activity, GraduationCap, Stethoscope } from "lucide-react";
-import { SharedDialog } from "@/shared/ui";
-import { motion } from "framer-motion";
-import { DefaultForm } from "@/components";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
+import { ProfileWrapper } from "./ProfileWrapper";
 
-export default function Profile() {
-  const [open, setOpen] = useState(false);
+// Static Params
+export async function generateStaticParams() {
+  return [...doctors, chiefDoctor].map((doc) => ({
+    slug: String(doc.id),
+  }));
+}
 
-  const { slug } = useParams();
+// SEO
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
   const doctor = [...doctors, chiefDoctor].find((d) => d.id === Number(slug));
 
   if (!doctor) {
-    return (
-      <Flex height="100vh" align="center" justify="center">
-        <Text size="9" weight="medium" color="gray">
-          Доктор не знайдений
-        </Text>
-      </Flex>
-    );
+    return { title: "Лікар не знайдений" };
   }
 
-  return (
-    <Box className={styles.container} p={{ initial: "3", md: "5" }}>
-      <Box className={styles.card}>
-        {/* Hero секция */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.75 }}
-        >
-          <Flex
-            p={{ initial: "4", md: "7" }}
-            gap={{ initial: "5", md: "9" }}
-            className={styles.headWrap}
-          >
-            {/* Фото доктора */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-            >
-              <Box className={styles.avatarWrap}>
-                <img
-                  src={doctor.avatar}
-                  alt={doctor.name}
-                  className={styles.avatar}
-                />
-              </Box>
-            </motion.div>
+  return {
+    title: `${doctor.name} — ${doctor.specialty} | Медичний центр`,
+    description: `Запис на прийом до ${doctor.name}. Досвід: ${doctor.experience}. Спеціалізація: ${doctor.specialty}.`,
+    openGraph: {
+      title: `${doctor.name} — ${doctor.specialty}`,
+      description: `Лікар вищої категорії. ${doctor.experience}`,
+      images: [doctor.avatar],
+    },
+  };
+}
 
-            {/* Текстовая информация */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.2 }}
-            >
-              <Flex
-                direction="column"
-                justify="center"
-                className={styles.heroInfo}
-              >
-                <Heading as="h1" className={styles.nameHeading}>
-                  {doctor.name}
-                </Heading>
-                <Text
-                  className={styles.specialty}
-                  size={{ initial: "3", md: "6" }}
-                >
-                  {doctor.specialty}
-                </Text>
-                <Text className={styles.experience}>{doctor.experience}</Text>
+export default async function Profile({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
 
-                <motion.button
-                  className={styles.overlayButton}
-                  onClick={() => setOpen(true)}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Запис на консультацію
-                </motion.button>
-              </Flex>
-            </motion.div>
+  const doctor = [...doctors, chiefDoctor].find((d) => d.id === Number(slug));
 
-            <Image
-              src={flowerImg}
-              alt="flower-img"
-              className={styles.flowerImg}
-              loading="lazy"
-            />
-          </Flex>
-        </motion.div>
+  if (!doctor) notFound();
 
-        <Separator size="4" />
-
-        {/* Нижняя часть — секции */}
-        <Flex
-          gap="5"
-          direction="column"
-          p={{ initial: "4", md: "7" }}
-          pt={{ initial: "2", md: "5" }}
-        >
-          {/* Освіта */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-          >
-            <Flex direction="column">
-              <Flex align="center" gap="2">
-                <GraduationCap size={32} color="#43ae43" />
-                <Text className={styles.sectionTitle}>Освіта</Text>
-              </Flex>
-              <Flex direction="column">
-                {doctor.education?.split(". ").map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 }}
-                  >
-                    <Text className={styles.directionItem}>
-                      {item.trim()}
-                      {doctor.education &&
-                        index < doctor.education.split(". ").length - 1 &&
-                        "\n"}
-                    </Text>
-                  </motion.div>
-                ))}
-              </Flex>
-            </Flex>
-          </motion.div>
-
-          {/* Спеціалізація */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-          >
-            <Flex direction="column" gap="2">
-              <Flex align="center" gap="2">
-                <Stethoscope size={32} strokeWidth={2} color="#43ae43" />
-                <Text className={styles.sectionTitle}>Спеціалізація</Text>
-              </Flex>
-              <Flex direction="column">
-                {doctor.specialization?.split(". ").map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 }}
-                  >
-                    <Text className={styles.directionItem}>
-                      {item.trim()}
-                      {doctor.specialization &&
-                        index < doctor.specialization.split(". ").length - 1 &&
-                        "\n"}
-                    </Text>
-                  </motion.div>
-                ))}
-              </Flex>
-            </Flex>
-          </motion.div>
-
-          {/* Напрями діяльності */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Box>
-              <Flex align="center" gap="2">
-                <Activity size={32} strokeWidth={2} color="#43ae43" />
-                <Text className={styles.sectionTitle}>Напрями діяльності</Text>
-              </Flex>
-              <ul className={styles.directionsList}>
-                {doctor.directions?.map((dir, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
-                  >
-                    <Text size="4" className={styles.directionItem}>
-                      {dir}
-                    </Text>
-                  </motion.li>
-                ))}
-              </ul>
-            </Box>
-          </motion.div>
-        </Flex>
-      </Box>
-
-      <SharedDialog open={open} onOpenChange={setOpen}>
-        <DefaultForm onSuccess={() => setOpen(false)} />
-      </SharedDialog>
-    </Box>
-  );
+  return <ProfileWrapper doctor={doctor} />;
 }

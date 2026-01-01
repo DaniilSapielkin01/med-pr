@@ -1,14 +1,17 @@
-import type { NextConfig } from "next";
 import { createVanillaExtractPlugin } from "@vanilla-extract/next-plugin";
+import type { NextConfig } from "next";
 
 const withVanillaExtract = createVanillaExtractPlugin();
 
-export default withVanillaExtract({
+/** @type {NextConfig} */
+const nextConfig: NextConfig = {
   reactStrictMode: true,
-});
+  output: "export" as const, // ← добавь "as const" — это решает проблему с типом
+  images: {
+    unoptimized: true,
+  },
+  trailingSlash: true,
+  basePath: "",
+};
 
-// const nextConfig: NextConfig = {
-//   /* config options here */
-// };
-
-// export default nextConfig;
+export default withVanillaExtract(nextConfig);

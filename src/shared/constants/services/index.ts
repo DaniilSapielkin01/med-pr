@@ -1,9 +1,31 @@
 import {
   Hospital,
-  Syringe,
-  Stethoscope,
-  Venus,
   HeartHandshake,
+  Building2,
+  Users,
+  User,
+  FilePenLine,
+  LucideIcon,
+  Activity, // Кардіологія (серцебиття)
+  Brain, // Неврологія
+  Baby, // Педіатрія + УЗД для дітей
+  Heart, // Загальне для здоров'я / Мамологія
+  Stethoscope, // Загальна медична іконка / Сімейна медицина
+  Eye, // Офтальмологія
+  Ear, // Оториноларингологія
+  Scan, // МРТ / КТ / Рентген
+  Monitor, // УЗД (як моніторинг)
+  Syringe, // Вакцинація
+  TestTube, // Лабораторія / Аналізи
+  Bone, // Травматологія
+  Flower, // Алергологія (як пилок)
+  Droplets, // Ендокринологія / Гормони / Флебологія
+  Venus, // Гінекологія (символ жіночого)
+  Scissors, // Хірургія
+  Wind, // Пульмонологія (дихання)
+  Hand, // Ревматологія (суглоби)
+  Search, // Ендоскопія / Діагностика
+  Goal, // Проктологія (як ціль)
 } from "lucide-react";
 
 // Types heaader info
@@ -11,6 +33,7 @@ export interface IAdditional {
   ua: string;
   en: string;
   link: string;
+  icon?: LucideIcon;
   seo: {
     ua: { title: string; description: string };
     ru: { title: string; description: string };
@@ -21,6 +44,7 @@ export interface IMainServices {
   title: string;
   link: string;
   additional?: IAdditional[];
+  icon: LucideIcon;
 }
 
 export const services: IAdditional[] = [
@@ -28,7 +52,8 @@ export const services: IAdditional[] = [
   {
     ua: "МРТ",
     en: "MRI",
-    link: "",
+    link: "/mrt",
+    icon: Scan,
     seo: {
       ua: {
         title: "МРТ — магнітно-резонансна томографія",
@@ -45,7 +70,8 @@ export const services: IAdditional[] = [
   {
     ua: "КТ",
     en: "CT Scan",
-    link: "",
+    link: "/ct",
+    icon: Scan,
     seo: {
       ua: {
         title: "КТ — комп’ютерна томографія",
@@ -62,7 +88,8 @@ export const services: IAdditional[] = [
   {
     ua: "УЗД",
     en: "Ultrasound",
-    link: "",
+    link: "/ultrasound",
+    icon: Monitor,
     seo: {
       ua: {
         title: "УЗД — ультразвукова діагностика",
@@ -78,7 +105,8 @@ export const services: IAdditional[] = [
   {
     ua: "УЗД для дітей",
     en: "Pediatric Ultrasound",
-    link: "",
+    link: "/ultrasound-pediatric",
+    icon: Baby,
     seo: {
       ua: {
         title: "УЗД для дітей",
@@ -94,7 +122,8 @@ export const services: IAdditional[] = [
   {
     ua: "Рентгенографія",
     en: "X-ray",
-    link: "",
+    link: "/xray",
+    icon: Scan,
     seo: {
       ua: {
         title: "Рентгенографія",
@@ -110,7 +139,8 @@ export const services: IAdditional[] = [
   {
     ua: "Ендоскопія",
     en: "Endoscopy",
-    link: "",
+    link: "/endoscopy",
+    icon: Search,
     seo: {
       ua: {
         title: "Ендоскопія",
@@ -125,7 +155,8 @@ export const services: IAdditional[] = [
   {
     ua: "Лабораторні послуги",
     en: "Laboratory Services",
-    link: "",
+    link: "/laboratory-services",
+    icon: TestTube,
     seo: {
       ua: {
         title: "Лабораторні аналізи",
@@ -142,7 +173,8 @@ export const services: IAdditional[] = [
   {
     ua: "Кардіологія",
     en: "Cardiology",
-    link: "",
+    link: "/cardiology",
+    icon: Activity,
     seo: {
       ua: {
         title: "Кардіологія",
@@ -158,7 +190,8 @@ export const services: IAdditional[] = [
   {
     ua: "Неврологія",
     en: "Neurology",
-    link: "",
+    link: "/neurology",
+    icon: Brain,
     seo: {
       ua: {
         title: "Неврологія",
@@ -173,7 +206,8 @@ export const services: IAdditional[] = [
   {
     ua: "Педіатрія",
     en: "Pediatrics",
-    link: "",
+    link: "/pediatrician",
+    icon: Baby,
     seo: {
       ua: {
         title: "Педіатрія",
@@ -188,7 +222,8 @@ export const services: IAdditional[] = [
   {
     ua: "Гінекологія",
     en: "Gynecology",
-    link: "",
+    link: "/gynecology",
+    icon: Venus,
     seo: {
       ua: {
         title: "Гінекологія",
@@ -205,7 +240,8 @@ export const services: IAdditional[] = [
   {
     ua: "Травматологія",
     en: "Traumatology",
-    link: "",
+    link: "/traumatology",
+    icon: Bone,
     seo: {
       ua: {
         title: "Травматологія",
@@ -221,7 +257,8 @@ export const services: IAdditional[] = [
   {
     ua: "Ревматологія",
     en: "Rheumatology",
-    link: "",
+    link: "/rheumatology",
+    icon: Hand,
     seo: {
       ua: {
         title: "Ревматологія",
@@ -238,7 +275,8 @@ export const services: IAdditional[] = [
   {
     ua: "Офтальмологія",
     en: "Ophthalmology",
-    link: "",
+    link: "/ophthalmology",
+    icon: Eye,
     seo: {
       ua: {
         title: "Офтальмологія",
@@ -253,7 +291,8 @@ export const services: IAdditional[] = [
   {
     ua: "Оториноларингологія",
     en: "Otolaryngology",
-    link: "",
+    link: "/otolaryngology",
+    icon: Ear,
     seo: {
       ua: {
         title: "Оториноларингологія",
@@ -268,7 +307,8 @@ export const services: IAdditional[] = [
   {
     ua: "Алергологія",
     en: "Allergology",
-    link: "",
+    link: "/allergology",
+    icon: Flower,
     seo: {
       ua: {
         title: "Алергологія",
@@ -283,7 +323,8 @@ export const services: IAdditional[] = [
   {
     ua: "Ендокринологія",
     en: "Endocrinology",
-    link: "",
+    link: "/endocrinology",
+    icon: Droplets,
     seo: {
       ua: {
         title: "Ендокринологія",
@@ -298,7 +339,8 @@ export const services: IAdditional[] = [
   {
     ua: "Гастроентерологія",
     en: "Gastroenterology",
-    link: "",
+    link: "/gastroenterology",
+    icon: HeartHandshake,
     seo: {
       ua: {
         title: "Гастроентерологія",
@@ -315,7 +357,8 @@ export const services: IAdditional[] = [
   {
     ua: "Сімейна медицина",
     en: "Family Medicine",
-    link: "",
+    link: "/family-medicine",
+    icon: Stethoscope,
     seo: {
       ua: {
         title: "Сімейна медицина",
@@ -330,7 +373,8 @@ export const services: IAdditional[] = [
   {
     ua: "Урологія",
     en: "Urology",
-    link: "",
+    link: "/urology",
+    icon: Droplets,
     seo: {
       ua: {
         title: "Урологія",
@@ -346,7 +390,8 @@ export const services: IAdditional[] = [
   {
     ua: "Пульмонологія",
     en: "Pulmonology",
-    link: "",
+    link: "/pulmonology",
+    icon: Wind,
     seo: {
       ua: {
         title: "Пульмонологія",
@@ -361,7 +406,8 @@ export const services: IAdditional[] = [
   {
     ua: "Хірургія",
     en: "Surgery",
-    link: "",
+    link: "/surgery",
+    icon: Scissors,
     seo: {
       ua: {
         title: "Хірургія",
@@ -376,7 +422,8 @@ export const services: IAdditional[] = [
   {
     ua: "Мамологія",
     en: "Mammology",
-    link: "",
+    link: "/mammology",
+    icon: Heart,
     seo: {
       ua: {
         title: "Мамологія",
@@ -391,7 +438,8 @@ export const services: IAdditional[] = [
   {
     ua: "Дерматовенерологія",
     en: "Dermatovenereology",
-    link: "",
+    link: "/dermatovenerology",
+    icon: Droplets,
     seo: {
       ua: {
         title: "Дерматовенерологія",
@@ -406,7 +454,8 @@ export const services: IAdditional[] = [
   {
     ua: "Проктологія",
     en: "Proctology",
-    link: "",
+    link: "/proctology",
+    icon: Goal,
     seo: {
       ua: {
         title: "Проктологія",
@@ -421,7 +470,8 @@ export const services: IAdditional[] = [
   {
     ua: "Флебологія",
     en: "Phlebology",
-    link: "",
+    link: "/phlebology",
+    icon: Droplets,
     seo: {
       ua: {
         title: "Флебологія",
@@ -438,7 +488,8 @@ export const services: IAdditional[] = [
   {
     ua: "Вакцинація",
     en: "Vaccination",
-    link: "",
+    link: "/vaccination",
+    icon: Syringe,
     seo: {
       ua: {
         title: "Вакцинація",
@@ -450,21 +501,22 @@ export const services: IAdditional[] = [
       },
     },
   },
-  {
-    ua: "Пакетні пропозиції",
-    en: "Package Offers",
-    link: "",
-    seo: {
-      ua: {
-        title: "Пакетні медичні послуги",
-        description: "Комплексні програми обстежень за вигідною вартістю.",
-      },
-      ru: {
-        title: "Пакетные медицинские услуги",
-        description: "Комплексные программы обследований по выгодной цене.",
-      },
-    },
-  },
+  // {
+  //   ua: "Пакетні пропозиції",
+  //   en: "Package Offers",
+  //   link: "/packages",
+  //   icon: FileSearch,
+  //   seo: {
+  //     ua: {
+  //       title: "Пакетні медичні послуги",
+  //       description: "Комплексні програми обстежень за вигідною вартістю.",
+  //     },
+  //     ru: {
+  //       title: "Пакетные медицинские услуги",
+  //       description: "Комплексные программы обследований по выгодной цене.",
+  //     },
+  //   },
+  // },
 ];
 
 // Additional information
@@ -473,6 +525,7 @@ export const declaration: IAdditional[] = [
     ua: "Для дорослого",
     en: "For adults",
     link: "",
+    icon: User,
     seo: {
       ua: {
         title: "Обстеження для дорослих — діагностика та консультація",
@@ -490,6 +543,7 @@ export const declaration: IAdditional[] = [
     ua: "Для дитини (до 14 років)",
     en: "For children (up to 14 years)",
     link: "",
+    icon: Baby,
     seo: {
       ua: {
         title: "Обстеження для дітей до 14 років — безпечно та точно",
@@ -510,27 +564,33 @@ export const mainServices: IMainServices[] = [
   {
     title: "Медичні центри",
     link: "/medical-centers",
+    icon: Building2,
   },
   {
     title: "Госпіталь",
     link: "/hospital",
+    icon: Hospital,
   },
   {
     title: "Наші лікарі",
     link: "/doctors",
+    icon: Users,
   },
   {
     title: "Послуги",
-    link: "",
+    link: "/services",
+    icon: Stethoscope,
     additional: services,
   },
-  {
-    title: "Блог",
-    link: "",
-  },
+  // {
+  //   title: "Блог",
+  //   link: "/blog",
+  //   icon: FileText,
+  // },
   {
     title: "Підписання декларацій",
-    link: "",
+    link: "/declaration",
+    icon: FilePenLine,
     additional: declaration,
   },
 ];
@@ -542,35 +602,41 @@ export const directionOfWork = [
     title: "Госпіталізація",
     desc: "Ми надаємо послуги стаціонарного лікування в комфортних палатах з цілодобовим медичним наглядом. Пацієнти отримують комплексну діагностику, лікування та реабілітацію під контролем кваліфікованих фахівців.",
     icon: Hospital,
+    link: "/hospital",
   },
   {
     id: 2,
     title: "Вакцинація",
     desc: "У нашій клініці проводиться вакцинація дорослих та дітей відповідно до національного календаря щеплень та індивідуальних потреб. Використовуємо тільки сертифіковані та якісні вакцини від провідних виробників.",
     icon: Syringe,
+    link: "/service/vaccination",
   },
   {
     id: 3,
     title: "Сімейна медицина",
     desc: "Сімейний лікар — ваш особистий медичний супровідник для всієї родини. Ми пропонуємо профілактичні огляди, ведення хронічних захворювань, видачу довідок та направлень, а також консультації з питань здорового способу життя.",
     icon: Stethoscope,
+    link: "/service/family-medicine",
   },
   {
     id: 4,
     title: "Гінекологія",
     desc: "Комплексна гінекологічна допомога: профілактичні огляди, діагностика та лікування жіночих захворювань, планування вагітності, ведення вагітності, консультації з контрацепції та менопаузи.",
     icon: Venus,
+    link: "/service/gynecology",
   },
   {
     id: 5,
     title: "Хірургія",
     desc: "Проведення малоінвазивних та планових хірургічних втручань, амбулаторних операцій, видалення новоутворень, лікування варикозу та інших хірургічних патологій з використанням сучасного обладнання.",
     icon: Venus,
+    link: "/service/surgery",
   },
   {
     id: 6,
     title: "Наші послуги",
     desc: "Повний спектр медичних послуг: від первинної консультації та діагностики до спеціалізованого лікування та реабілітації. Ми дбаємо про ваше здоров’я на всіх етапах.",
     icon: HeartHandshake,
+    link: "/services",
   },
 ];

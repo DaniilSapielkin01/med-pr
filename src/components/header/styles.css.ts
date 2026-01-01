@@ -1,7 +1,15 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 export const navItem = style({
   position: "relative",
+  display: "inline-block",
+  textDecoration: "none",
+});
+
+export const navLink = style({
+  color: "#333333",
+  fontWeight: 500,
+  transition: "color 0.3s ease",
 });
 
 export const stickyNav = style({
@@ -11,38 +19,51 @@ export const stickyNav = style({
   alignItems: "center",
   justifyContent: "center",
 
-  position: "sticky",
+  position: "fixed",
   top: 0,
-  zIndex: 100,
+  zIndex: 1000,
 
   // blur
   backdropFilter: "blur(12px)",
-  WebkitBackdropFilter: "blur(12px)",
-  backgroundColor: "rgba(255, 255, 255, 0.8)",
+  WebkitBackdropFilter: "blur(5px)",
+  backgroundColor: "rgba(255, 255, 255, 0.75)",
+  boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
 });
 
-export const spanBg = style({
-  position: "absolute",
-  left: 0,
-  right: 0,
-  bottom: -4,
-  height: 1,
-  backgroundColor: "currentColor",
-  transform: "scaleX(0)",
-  transformOrigin: "center",
-  transition: "transform 200ms ease",
-  pointerEvents: "none",
-});
+export const logoImg = style({
+  maxWidth: "300px",
+  height: "auto",
 
-export const navItemHover = style({
-  selectors: {
-    [`${navItem}:hover &`]: {
-      transform: "scaleX(1)",
+  "@media": {
+    "screen and (max-width: 1248px)": {
+      maxWidth: "200px",
     },
   },
 });
 
+export const underline = style({
+  position: "absolute",
+  left: 0,
+  right: 0,
+  bottom: "-6px",
+  height: "2px",
+  backgroundColor: "#43ae43",
+  transform: "scaleX(0)",
+  transformOrigin: "left",
+  transition: "transform 0.35s ease",
+  pointerEvents: "none",
+});
+
+globalStyle(`${navItem}:hover ${navLink}`, {
+  color: "#43ae43",
+});
+
+globalStyle(`${navItem}:hover ${underline}`, {
+  transform: "scaleX(1)",
+});
+
 export const navItemActive = style({
+  color: "#43ae43",
   selectors: {
     [`${navItem} &`]: {
       transform: "scaleX(1)",
@@ -71,4 +92,36 @@ export const dropdownGrid = style({
       transparent calc(66.66% + 1px)
     )
   `,
+});
+
+/* Десктопна навігація + контакти — видно тільки з 1100px і вище */
+export const desktopNav = style({
+  display: "none",
+
+  "@media": {
+    "screen and (min-width: 1100px)": {
+      display: "flex",
+    },
+  },
+});
+
+/* Мобільна частина (бургер + опціонально телефон) — видно до 1099px */
+export const mobileNav = style({
+  display: "flex",
+
+  "@media": {
+    "screen and (min-width: 1100px)": {
+      display: "none",
+    },
+  },
+});
+
+export const tabletOnly = style({
+  display: "none",
+
+  "@media": {
+    "screen and (min-width: 768px) and (max-width: 1099px)": {
+      display: "flex",
+    },
+  },
 });

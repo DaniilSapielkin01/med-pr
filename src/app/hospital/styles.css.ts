@@ -56,7 +56,6 @@ export const heroSubtitle = style({
   fontSize: "1.25rem",
   color: "#2d6a2d",
   lineHeight: 1.6,
-  // maxWidth: "800px",
 
   "@media": {
     "screen and (max-width: 768px)": {

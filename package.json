@@ -2,11 +2,14 @@
   "name": "med-site",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://DaniilSapielkin01.github.io/med-pr",
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "export": "next build --webpack",
+    "deploy": "next build --webpack && gh-pages -d out"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
@@ -33,6 +36,7 @@
     "@vanilla-extract/next-plugin": "^2.4.17",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
+    "gh-pages": "^6.3.0",
     "typescript": "^5"
   }
 }

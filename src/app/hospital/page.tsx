@@ -123,18 +123,12 @@ export default function HospitalPage() {
                   );
                 })}
               </Flex>
-
-              <motion.button
+              <Flex
                 className={styles.overlayButton}
                 onClick={() => setOpen(true)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
               >
                 Отримати консультацію
-              </motion.button>
+              </Flex>
             </motion.div>
 
             <Image

@@ -2,9 +2,10 @@
 
 import { directionOfWork } from "@/shared/constants/services";
 import { Box, Flex, Text } from "@radix-ui/themes";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import * as styles from "./styles.css";
 import { cardVariants, containerVariants, rightVariants } from "@/shared/types";
+import Link from "next/link";
 
 export const OurServices = () => {
   return (
@@ -31,19 +32,23 @@ export const OurServices = () => {
             const Icon = item.icon;
 
             return (
-              <motion.div
-                key={item.id}
-                className={styles.card}
-                variants={cardVariants}
-              >
-                <Box className={styles.iconWrapper}>
-                  <Icon size={32} strokeWidth={2} className={styles.icon} />
-                </Box>
-                <h3 className={styles.title}>{item.title}</h3>
-                <Text as="p" className={styles.description}>
-                  {item.desc}
-                </Text>
-              </motion.div>
+              <Link href={item.link} key={item.title}>
+                <motion.div
+                  key={item.id}
+                  className={styles.card}
+                  variants={cardVariants}
+                >
+                  <Flex align={"center"} gap="2">
+                    <Box className={styles.iconWrapper}>
+                      <Icon size={24} strokeWidth={2} className={styles.icon} />
+                    </Box>
+                    <h3 className={styles.title}>{item.title}</h3>
+                  </Flex>
+                  <Text as="p" className={styles.description}>
+                    {item.desc}
+                  </Text>
+                </motion.div>
+              </Link>
             );
           })}
         </motion.div>

@@ -42,8 +42,8 @@ export const iconWrapper = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  width: "64px",
-  height: "64px",
+  width: "44px",
+  height: "44px",
   backgroundColor: "#43ae43",
   borderRadius: "50%",
   marginBottom: "24px",
@@ -58,7 +58,7 @@ export const title = style({
   fontSize: "22px",
   fontWeight: "bold",
   color: "#1a1a1a",
-  margin: "0 0 16px 0",
+  margin: "0 0 21px 0",
 });
 
 export const description = style({

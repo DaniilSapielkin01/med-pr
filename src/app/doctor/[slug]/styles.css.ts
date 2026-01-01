@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 export const container = style({
   minHeight: "100vh",
@@ -158,10 +158,12 @@ export const overlayButton = style({
   cursor: "pointer",
   transition: "all 0.3s ease",
   boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
+  maxWidth: "fit-content",
 
   "@media": {
     "screen and (max-width: 440px)": {
       fontSize: "16px",
+      maxWidth: "100%",
     },
   },
 
@@ -174,4 +176,50 @@ export const overlayButton = style({
   ":active": {
     transform: "translateY(0)",
   },
+});
+
+export const socialLink = style({
+  display: "block",
+  marginTop: "var(--space-2)",
+});
+
+export const socialCircle = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "36px",
+  height: "36px",
+  borderRadius: "50%",
+  backgroundColor: "#ffffff",
+  border: "1px solid #e0e0e0",
+  transition: "all 0.35s ease",
+  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+});
+
+export const socialIcon = style({
+  color: "#666666",
+  transition: "all 0.35s ease",
+});
+
+export const nameInstagram = style({
+  display: "flex",
+  alignItems: "center",
+  transition: "color 0.25s ease",
+});
+
+/* Ховер-ефекти */
+globalStyle(`${socialLink}:hover ${nameInstagram}`, {
+  color: "#43ae43",
+});
+
+globalStyle(`${socialLink}:hover ${socialCircle}`, {
+  backgroundColor: "#43ae43",
+  borderColor: "#43ae43",
+  transform: "translateY(-3px)",
+  boxShadow: "0 8px 20px rgba(67,174,67,0.2)",
+});
+
+globalStyle(`${socialLink}:hover ${socialIcon}`, {
+  color: "#ffffff",
+  transform: "scale(1.2)",
 });
