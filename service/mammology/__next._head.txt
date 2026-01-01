@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[49133,[],"ViewportBoundary"]
+3:I[49133,[],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[4600,[],"IconMark"]
+0:{"buildId":"CowZfqYJC4EYB3fcNmz9L","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Мамологія | Медичний центр"}],["$","meta","1",{"name":"description","content":"**Мамологія** – це напрямок в медицині, який спеціалізується на діагностиці, профілактиці та усуненні захворювань молочної залози. \n\n**Prevention** пропонує кваліфіковану медичну допомогу жінкам різного віку. Звернутися до нас ви можете з метою профілактики захворювань молочних залоз або при наявності їх симптомів. Одразу на прийомі лікар-мамолог за потреби зможе виконати узд молочних залоз. Наш лікар-мамолог зможе вчасно діагностувати патологію і підібрати ефективне лікування."}],["$","link","2",{"rel":"icon","href":"/med-pr/favicon.ico?603d046c9a6fdfbb","type":"image/x-icon","sizes":"16x16"}],["$","$L5","3",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}

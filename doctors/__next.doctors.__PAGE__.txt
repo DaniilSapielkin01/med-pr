@@ -1,0 +1,7 @@
+1:"$Sreact.fragment"
+2:I[67962,["503","static/chunks/503-64c7592e4f178a92.js","386","static/chunks/386-a6c51c8db54066cb.js","481","static/chunks/481-3b9e55b6e3353d57.js","581","static/chunks/581-9816715b8639b881.js","289","static/chunks/app/doctors/page-f54844914fc15156.js"],"TeamList"]
+3:I[49133,[],"OutletBoundary"]
+4:"$Sreact.suspense"
+:HL["/med-pr/_next/static/css/5612f53bfd0db7e3.css","style"]
+0:{"buildId":"CowZfqYJC4EYB3fcNmz9L","rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","link","0",{"rel":"stylesheet","href":"/med-pr/_next/static/css/5612f53bfd0db7e3.css","precedence":"next"}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+5:null

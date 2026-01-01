@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[49133,[],"ViewportBoundary"]
+3:I[49133,[],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[4600,[],"IconMark"]
+0:{"buildId":"CowZfqYJC4EYB3fcNmz9L","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Кардіологія | Медичний центр"}],["$","meta","1",{"name":"description","content":"**Лікарі-кардіологи Prevention** спеціалізуються на діагностиці, лікуванні та профілактиці серцево-судинних захворювань, використовуючи в своїй практиці різні методи кардіодіагностики, а також керуючись принципами evidence based medicine, рекомендаціями європейських і американських медичних товариств. Спектр консультативної допомоги дозволяє проводити різні методи кардіодіагностики і застосовувати сучасні принципи лікування пацієнтів з різними захворюваннями серцево-судинної системи."}],["$","link","2",{"rel":"icon","href":"/med-pr/favicon.ico?603d046c9a6fdfbb","type":"image/x-icon","sizes":"16x16"}],["$","$L5","3",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}

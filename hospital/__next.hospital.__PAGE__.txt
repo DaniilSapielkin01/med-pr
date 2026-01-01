@@ -1,0 +1,10 @@
+1:"$Sreact.fragment"
+2:I[97981,[],"ClientPageRoot"]
+3:I[30786,["503","static/chunks/503-64c7592e4f178a92.js","386","static/chunks/386-a6c51c8db54066cb.js","482","static/chunks/482-ae76a48d715c8705.js","481","static/chunks/481-3b9e55b6e3353d57.js","156","static/chunks/156-6e193a6617f9e920.js","596","static/chunks/596-63e96e7987682f03.js","733","static/chunks/733-19c126de9851ccde.js","771","static/chunks/771-752d0be00777a6a5.js","633","static/chunks/app/hospital/page-8fe53281a3520ef7.js"],"default"]
+6:I[49133,[],"OutletBoundary"]
+7:"$Sreact.suspense"
+:HL["/med-pr/_next/static/css/8046af8318d1c1e2.css","style"]
+0:{"buildId":"CowZfqYJC4EYB3fcNmz9L","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","link","0",{"rel":"stylesheet","href":"/med-pr/_next/static/css/8046af8318d1c1e2.css","precedence":"next"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+4:{}
+5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
+8:null

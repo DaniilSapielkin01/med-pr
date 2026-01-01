@@ -1,0 +1,9 @@
+{
+  "http://localhost:3000/": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1767185856544-12629.report.html",
+  "http://localhost:3000/services": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1767185857644-47070.report.html",
+  "http://localhost:3000/doctors": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1767185858444-3818.report.html",
+  "http://localhost:3000/doctor/[slug]": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1767185859390-32520.report.html",
+  "http://localhost:3000/privacy-policy": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1767185860651-75835.report.html",
+  "http://localhost:3000/medical-centers": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1767185861842-34147.report.html",
+  "http://localhost:3000/hospital": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1767185862446-31474.report.html"
+}
