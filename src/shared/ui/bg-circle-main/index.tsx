@@ -1,5 +1,8 @@
+import { Box } from "@radix-ui/themes";
+
 export const BgCircleMain = () => (
-  <div
+  <Box
+    display={{ initial: "none", xs: "block" }}
     style={{
       position: "absolute",
       top: "0",
