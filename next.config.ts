@@ -6,12 +6,12 @@ const withVanillaExtract = createVanillaExtractPlugin();
 /** @type {NextConfig} */
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "export" as const, // ← добавь "as const" — это решает проблему с типом
+  output: "export",
+  trailingSlash: true, // Рекомендую включить для надёжности маршрутов
+  basePath: "/med-pr", // ← Главное изменение!
   images: {
-    unoptimized: true,
+    unoptimized: true, // Обязательно для static export
   },
-  trailingSlash: true,
-  basePath: "",
 };
 
 export default withVanillaExtract(nextConfig);
