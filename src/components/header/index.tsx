@@ -57,9 +57,7 @@ export const Header = () => {
           <Contacts />
           {mainServices.map((item) => {
             const isActive = pathname.startsWith(`${BASE_PATH}${item.link}`);
-            const isOpen =
-              openItem === item.title ||
-              pathname.startsWith(`${BASE_PATH}${item.link}`);
+            const isOpen = openItem === item.title;
 
             if (!item.additional) {
               return (
