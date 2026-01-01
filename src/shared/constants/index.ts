@@ -3,3 +3,5 @@ export const CONSTANTS = {
   SOCIAL_INSTAGRAM: "https://www.instagram.com/prevention.medcentre",
   SOCIAL_FACEBOOK: "https://www.facebook.com/preventionmed",
 };
+
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";

@@ -8,6 +8,7 @@ import Link from "next/link";
 import * as styles from "./styles.css";
 import Image from "next/image";
 import { cardVariants, rightVariants } from "@/shared/types";
+import { BASE_PATH } from "@/shared/constants";
 
 const DEFAULT_IMG = "/images/doctors/doctor_default.webp";
 
@@ -71,7 +72,7 @@ export const TeamList = () => {
               />
               <div className={styles.chiefImgWrap}>
                 <img
-                  src={chiefDoctor.avatar}
+                  src={`${BASE_PATH}${chiefDoctor.avatar}`}
                   alt={chiefDoctor.name}
                   className={styles.chiefImg}
                 />
@@ -166,7 +167,7 @@ export const TeamList = () => {
                   >
                     <div className={styles.doctorImgWrap}>
                       <img
-                        src={doctor.avatar || DEFAULT_IMG}
+                        src={`${BASE_PATH}${doctor.avatar || DEFAULT_IMG}`}
                         alt={doctor.name}
                         className={styles.doctorImg}
                         loading="lazy"

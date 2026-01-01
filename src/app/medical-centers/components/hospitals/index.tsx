@@ -8,6 +8,7 @@ import * as styles from "./styles.css";
 import { useState } from "react";
 import { SharedDialog } from "@/shared/ui";
 import { AppointmentForm } from "./AppointmentForm";
+import { BASE_PATH } from "@/shared/constants";
 
 export const Hospitals = () => {
   const [open, setOpen] = useState(false);
@@ -74,7 +75,9 @@ export const Hospitals = () => {
               >
                 <div className={styles.hospitalImgWrap}>
                   <img
-                    src={hospital.image || "/images/hospitals/placeholder.webp"}
+                    src={`${BASE_PATH}${
+                      hospital.image || "/images/hospitals/placeholder.webp"
+                    }`}
                     alt={hospital.street}
                     className={styles.hospitalImg}
                     loading="lazy"

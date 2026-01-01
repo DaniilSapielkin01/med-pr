@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { chiefDoctor, doctors } from "@/data/doctors-list";
 import { Flex, Text, Heading, Box, Separator } from "@radix-ui/themes";
-import { useParams } from "next/navigation";
 import * as styles from "./styles.css";
 import Image from "next/image";
 import flowerImg from "@/shared/assets/img/flowers.png";
@@ -12,6 +10,7 @@ import { SharedDialog } from "@/shared/ui";
 import { motion } from "framer-motion";
 import { DefaultForm } from "@/components";
 import { IDoctors } from "@/shared/types";
+import { BASE_PATH } from "@/shared/constants";
 
 export function ProfileWrapper({ doctor }: { doctor?: IDoctors }) {
   const [open, setOpen] = useState(false);
@@ -48,7 +47,7 @@ export function ProfileWrapper({ doctor }: { doctor?: IDoctors }) {
             >
               <Box className={styles.avatarWrap}>
                 <img
-                  src={doctor.avatar}
+                  src={`${BASE_PATH}${doctor.avatar}`}
                   alt={doctor.name}
                   className={styles.avatar}
                 />

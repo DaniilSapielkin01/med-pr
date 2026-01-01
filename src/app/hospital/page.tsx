@@ -21,6 +21,7 @@ import * as styles from "./styles.css";
 import { hospitalData } from "@/data/hospital-data";
 import { motion } from "framer-motion";
 import { DefaultForm } from "@/components";
+import { BASE_PATH } from "@/shared/constants";
 
 const contentHeaders = [
   {
@@ -82,7 +83,7 @@ export default function HospitalPage() {
                 }}
               >
                 <Image
-                  src="/images/hospitals/hospital-2.jpg"
+                  src={`${BASE_PATH}/images/hospitals/hospital-2.jpg`}
                   alt="Головний вхід Prevention Hospital з дружньою командою лікарів"
                   width={800}
                   height={600}
