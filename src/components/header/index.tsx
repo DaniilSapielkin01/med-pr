@@ -10,6 +10,7 @@ import { MobileHeader } from "./mobile-header";
 import { Contacts } from "./contacts";
 import { usePathname } from "next/navigation";
 import * as styles from "./styles.css";
+import { BASE_PATH } from "@/shared/constants";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -55,8 +56,10 @@ export const Header = () => {
         <Flex align="center" gap="4" className={styles.desktopNav}>
           <Contacts />
           {mainServices.map((item) => {
-            const isActive = pathname === item.link;
-            const isOpen = openItem === item.title;
+            const isActive = pathname.startsWith(`${BASE_PATH}${item.link}`);
+            const isOpen =
+              openItem === item.title ||
+              pathname.startsWith(`${BASE_PATH}${item.link}`);
 
             if (!item.additional) {
               return (
