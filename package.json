@@ -2,14 +2,14 @@
   "name": "med-site",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://DaniilSapielkin01.github.io/med-pr.git",
+  "homepage": "https://DaniilSapielkin01.github.io/med-pr",
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
     "export": "next build --webpack",
-    "deploy": "npm run build && npm run export && touch out/.nojekyll && gh-pages -d out"
+    "deploy": "next build && touch out/.nojekyll && gh-pages -d out"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",

@@ -7,10 +7,10 @@ const withVanillaExtract = createVanillaExtractPlugin();
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: "export",
-  trailingSlash: true, // Рекомендую включить для надёжности маршрутов
-  basePath: "/med-pr", // ← Главное изменение!
+  trailingSlash: true,
+  basePath: "/med-pr",
   images: {
-    unoptimized: true, // Обязательно для static export
+    unoptimized: true,
   },
 };
 

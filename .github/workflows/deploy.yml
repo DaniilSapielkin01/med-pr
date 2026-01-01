@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -19,19 +19,19 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9 # или 8, какая у тебя локально
+          version: 9
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "pnpm" # Теперь кэш по pnpm-lock.yaml
+          node-version: '20'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm run build
+        run: pnpm run build  # ← использует исправленный script
 
       - name: Add .nojekyll
         run: touch out/.nojekyll
