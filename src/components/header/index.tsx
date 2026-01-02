@@ -34,6 +34,8 @@ export const Header = () => {
     }, 120);
   };
 
+  console.log("__ pathname", pathname);
+
   return (
     <Flex className={styles.stickyNav}>
       <Flex

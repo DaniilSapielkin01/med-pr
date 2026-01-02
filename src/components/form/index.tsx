@@ -4,6 +4,7 @@ import { Flex, Text } from "@radix-ui/themes";
 import { useState } from "react";
 import { PhoneInput, TextInput } from "@/shared/ui";
 import * as styles from "./styles.css";
+import { toast } from "sonner";
 
 export const FormEvent = () => {
   const [phone, setPhone] = useState("");
@@ -12,6 +13,15 @@ export const FormEvent = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(phone);
+
+    setName("");
+    setPhone("");
+
+    toast.success("Заявка успішно надіслана! 🎉", {
+      description: "Ми зв'яжемося з вами найближчим часом для підтвердження.",
+      position: "top-center",
+      duration: 4000,
+    });
   };
 
   return (

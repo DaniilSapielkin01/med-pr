@@ -23,6 +23,10 @@ export const AppointmentForm = ({
     e.preventDefault();
     console.log("Запись:", { name, phone, hospital });
     onSuccess();
+
+    setName("");
+    setPhone("");
+
     toast.success("Ваша заявка успішно надіслана! 🎉", {
       description: "Ми зв'яжемося з вами найближчим часом для підтвердження.",
       position: "top-center",
