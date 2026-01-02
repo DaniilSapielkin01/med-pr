@@ -1,12 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Flex, Text } from "@radix-ui/themes";
+import { Flex, Text, TextProps } from "@radix-ui/themes";
 import { PhoneInput, TextInput } from "@/shared/ui";
 import * as styles from "./form.css";
 import { toast } from "sonner";
 
-export const Form = ({ onSuccess }: { onSuccess: VoidFunction }) => {
+export const Form = ({
+  onSuccess,
+  headerColor,
+}: {
+  onSuccess: VoidFunction;
+  headerColor?: TextProps["color"];
+}) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
@@ -30,7 +36,7 @@ export const Form = ({ onSuccess }: { onSuccess: VoidFunction }) => {
 
   return (
     <Flex direction="column" gap="6" align="center" width="100%">
-      <Text size="6" weight="bold" align="center" color="mint">
+      <Text size="6" weight="bold" align="center" color={headerColor ?? "mint"}>
         Запис на консультацію
       </Text>
 

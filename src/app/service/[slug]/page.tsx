@@ -9,6 +9,7 @@ import { Header } from "./components/Header";
 import { Indications } from "./components/Indications";
 import { Services } from "./components/Services";
 import { services } from "@/shared/constants/services";
+import { ApprForm } from "./components/ApprForm";
 
 // Static Params
 export async function generateStaticParams() {
@@ -74,6 +75,7 @@ export default async function ServicePage({
         <Header data={data} />
         <Indications indications={data.indications} />
         <Services services={data.services} />
+        <ApprForm />
       </Box>
     </Box>
   );
