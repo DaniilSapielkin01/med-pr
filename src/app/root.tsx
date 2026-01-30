@@ -1,8 +1,9 @@
 import { Header, Footer } from "@/components";
-import { BgCircleMain } from "@/shared/ui";
+import { BgCircleMain, ChatBot } from "@/shared/ui";
 import { Flex, Theme } from "@radix-ui/themes";
 import { Toaster } from "sonner";
 import ScrollToTop from "./utils/scroll-to-top";
+import ChatWidget from "@/shared/ui/chat-widget/ChatWidget";
 
 export const Root = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -36,6 +37,7 @@ export const Root = ({ children }: { children: React.ReactNode }) => {
         }}
       />
       <ScrollToTop />
+      <ChatBot />
     </Theme>
   );
 };
