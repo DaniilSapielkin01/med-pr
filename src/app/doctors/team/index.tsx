@@ -117,7 +117,6 @@ export const TeamList = () => {
                   </Text>
                 </Flex>
                 <Text
-                  itemType="a"
                   size="2"
                   weight="medium"
                   color="green"
@@ -202,7 +201,6 @@ export const TeamList = () => {
                       )}
 
                       <Text
-                        itemType="a"
                         size="2"
                         weight="medium"
                         color="green"

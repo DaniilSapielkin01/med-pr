@@ -14,14 +14,14 @@ export const FormEvent = () => {
     e.preventDefault();
     console.log(phone);
 
-    setName("");
-    setPhone("");
-
     toast.success("Заявка успішно надіслана! 🎉", {
       description: "Ми зв'яжемося з вами найближчим часом для підтвердження.",
       position: "top-center",
       duration: 4000,
     });
+
+    setName("");
+    setPhone("");
   };
 
   return (
@@ -42,7 +42,7 @@ export const FormEvent = () => {
           <TextInput value={name} onChange={setName} required />
           <PhoneInput value={phone} onChange={setPhone} required />
 
-          <Flex className={styles.btnForm}>
+          <button className={styles.btnForm}>
             <Text
               size="3"
               weight={"bold"}
@@ -51,7 +51,7 @@ export const FormEvent = () => {
             >
               Надіслати
             </Text>
-          </Flex>
+          </button>
         </Flex>
       </form>
       <Text color="gray" weight={"medium"} size={"2"} m="auto">

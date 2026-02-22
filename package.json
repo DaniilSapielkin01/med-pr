@@ -2,7 +2,7 @@
   "name": "med-site",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://DaniilSapielkin01.github.io/med-pr",
+  "homepage": "https://prevention-clinic.vercel.app/",
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
