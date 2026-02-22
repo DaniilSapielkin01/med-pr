@@ -6,9 +6,9 @@ const withVanillaExtract = createVanillaExtractPlugin();
 /** @type {NextConfig} */
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "export",
+  // output: "export",  ← прибрали, щоб працювали API routes
   trailingSlash: true,
-  basePath: "/med-pr",
+  // basePath: process.env.NEXT_PUBLIC_BASE_PATH || "", // ← прибрали, на Vercel не потрібно
   images: {
     unoptimized: true,
   },
