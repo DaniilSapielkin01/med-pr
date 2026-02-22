@@ -4,7 +4,7 @@ import { directionOfWork } from "@/shared/constants/services";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { motion } from "framer-motion";
 import * as styles from "./styles.css";
-import { cardVariants, containerVariants, rightVariants } from "@/shared/types";
+import { cardVariants, rightVariants } from "@/shared/types";
 import Link from "next/link";
 
 export const OurServices = () => {
@@ -22,12 +22,7 @@ export const OurServices = () => {
       </motion.div>
 
       <Flex width="100%" justify="center">
-        <motion.div
-          className={styles.grid}
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className={styles.grid}>
           {directionOfWork.map((item) => {
             const Icon = item.icon;
 
@@ -51,7 +46,7 @@ export const OurServices = () => {
               </Link>
             );
           })}
-        </motion.div>
+        </div>
       </Flex>
     </Flex>
   );

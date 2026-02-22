@@ -18,8 +18,8 @@ export const cardVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.7,
-      delay: i * 0.08,
+      duration: 0.5,
+      delay: Math.min(i * 0.08, 0.4), // максимум 0.4s задержки
       ease: [0.22, 1, 0.36, 1],
     },
   }),
