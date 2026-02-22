@@ -23,6 +23,7 @@ export const grid = style({
 });
 
 export const card = style({
+  minHeight: "300px",
   background: "white",
   borderRadius: "20px",
   padding: "32px",

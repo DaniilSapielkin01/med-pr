@@ -7,7 +7,7 @@ import flowersImg from "@/shared/assets/img/flowers.png";
 import Link from "next/link";
 import * as styles from "./styles.css";
 import Image from "next/image";
-import { cardVariants, rightVariants } from "@/shared/types";
+import { rightVariants } from "@/shared/types";
 import { BASE_PATH } from "@/shared/constants";
 
 const DEFAULT_IMG = "/images/doctors/doctor_default.webp";
@@ -30,7 +30,7 @@ export const TeamList = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-50px" }}
           variants={rightVariants}
         >
           <Text size={{ initial: "6", md: "8" }} weight="bold">
@@ -41,10 +41,12 @@ export const TeamList = () => {
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{
-            duration: 1.2,
+            duration: 0.3,
             ease: [0.16, 1, 0.3, 1],
           }}
+          whileTap={{ scale: 0.97 }}
         >
           <Link
             href={`/doctor/${chiefDoctor.id}?${encodeURIComponent(
@@ -136,21 +138,18 @@ export const TeamList = () => {
           mt="8"
           asChild
         >
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={{
-              visible: {
-                transition: { staggerChildren: 0.08 },
-              },
-            }}
-          >
+          <div>
             {doctors.map((doctor, index) => (
               <motion.div
                 key={doctor.id}
-                custom={index}
-                variants={cardVariants}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.3,
+                  delay: Math.min(index * 0.03, 0.15),
+                  ease: [0.22, 0.8, 0.36, 1],
+                }}
               >
                 <Link
                   href={`/doctor/${doctor.id}?${encodeURIComponent(
@@ -213,7 +212,7 @@ export const TeamList = () => {
                 </Link>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </Grid>
       </Flex>
     </Box>
