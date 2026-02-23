@@ -91,7 +91,6 @@ export default function ChatBot() {
       sendMessage();
     }
   };
-
   const renderContent = useMemo(
     () =>
       (text: string): React.ReactNode =>
@@ -142,6 +141,57 @@ export default function ChatBot() {
         )),
     []
   );
+
+  // const renderContent = useMemo(
+  //   () =>
+  //     (text: string): React.ReactNode =>
+  //       text.split("\n").map((line, lineIdx, arr) => (
+  //         <span key={lineIdx}>
+  //           {PHONE_RE.test(line) && lineIdx !== 0 && <br />}
+  //           {line.split(TOKEN_RE).map((token, i) => {
+  //             if (token.startsWith("**"))
+  //               return <strong key={i}>{token.slice(2, -2)}</strong>;
+
+  //             const link = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+  //             if (link)
+  //               return (
+  //                 <a
+  //                   key={i}
+  //                   href={link[2]}
+  //                   target="_blank"
+  //                   rel="noopener noreferrer"
+  //                   style={{
+  //                     color: "#16a34a",
+  //                     textDecoration: "underline",
+  //                     fontWeight: 600,
+  //                   }}
+  //                 >
+  //                   {link[1]}
+  //                 </a>
+  //               );
+
+  //             if (PHONE_RE.test(token))
+  //               return (
+  //                 <a
+  //                   key={i}
+  //                   href={`tel:${token.replace(/[\s-]/g, "")}`}
+  //                   style={{
+  //                     color: "#16a34a",
+  //                     fontWeight: 700,
+  //                     textDecoration: "none",
+  //                   }}
+  //                 >
+  //                   {token}
+  //                 </a>
+  //               );
+
+  //             return token;
+  //           })}
+  //           {lineIdx < arr.length - 1 && <br />}
+  //         </span>
+  //       )),
+  //   []
+  // );
 
   return (
     <>
